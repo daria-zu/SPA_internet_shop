@@ -1,30 +1,43 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <header-nav :tabs="tabs"></header-nav>
+  
+  <div class="router">
+     
+   <router-view>
+    </router-view>
   </div>
-  <router-view/>
 </template>
 
+<script>
+import HeaderNav from '@/components/HeaderNav';
+
+export default {
+  components:{HeaderNav},
+
+  data() {
+   return {
+      tabs: [
+        {name: 'Каталог', path: '/catalog'},
+        {name: 'Авторизация', path: '/form'},
+        {name: 'Корзина', path: '/basket'}
+      ]
+   } 
+  }
+}
+</script>
+
 <style>
+*{
+  margin: 0;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  color: #151719;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f2f2f2;
+  height: 100vh;
 }
 
-#nav {
-  padding: 30px;
-}
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
