@@ -2,12 +2,12 @@
 <section>
   <div class="card" v-for="item in getWatches" :key="item.id">
       <div class="box_img">
-        <img :src="'./assets/'+item.img">
+        <img class="img" :src="require('@/assets/' + item.img)">
       </div>
       <div class="box_text">
         <h2>{{item.name}}</h2>
-        <p>{{item.prise}}</p>
-        <button>Купить</button>
+        <p>{{item.prise}} руб.</p>
+        <button @click="shop(item)">Купить</button>
       </div>
       <div class="box_link">
         <router-link class="link" :to="{name:'Card', params: {id: item.id}}">Подробнее -></router-link>
@@ -25,6 +25,11 @@ export default {
     name:'Watch',
     computed: {
         ...mapGetters(['getWatches'])
+    },
+    methods:{
+         shop(item){
+            this.$store.commit('addToBasket', {product: item});
+        }
     }
 }
 </script>
@@ -48,7 +53,8 @@ export default {
         width: 30%;
         border: 1px solid transparent
     }
-    img{
+    .img{
+        width: 100px;
         overflow: hidden;
     }
     .box_text{

@@ -13,16 +13,19 @@
             <vee-error class="error" name="password"/>
          </div>
          <input class="button" type="submit" value="Войти">
+
+         <!-- <p v-if="checkUser(value)>0" class="true">Авторизация пройдена успешно! <br>Можете приступить к покупкам</p>
+         <p v-esle class="false">Введены некорректные данные имя/пароль</p> -->
+
+         <p class="true unshow">Авторизация прошла успешно! <br>Можете приступить к покупкам</p>
+         <p class="false unshow">Введены некорректные данные имя/пароль</p>
       </vee-form>
-      <p class="true unshow">Авторизация прошла успешно! <br>Можете приступить к покупкам</p>
-      <p class="false unshow">Введены некорректные данные имя/пароль</p>
    </div>
 </template>
 
 <script>
 import {Form, Field, ErrorMessage, configure} from 'vee-validate';
 import * as yup from 'yup';
-import {mapMutations} from 'vuex';
 
 configure({
   validateOnInput: true
@@ -46,12 +49,13 @@ export default {
   },
 
    methods: {
-      ...mapMutations(['checkUser']),
+   
       sendData(values){
          console.log(values);
-         this.checkUser(values)
+         this.$store.commit('checkUser', {user: values});
       }
    }
+
 }
 
 </script>

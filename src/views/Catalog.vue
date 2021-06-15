@@ -10,6 +10,7 @@
       </transition>
    </div>
 </section> 
+
 </template>
 
 <script>

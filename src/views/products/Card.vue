@@ -7,8 +7,8 @@
       <div class="box_text">
         <h2>{{card.name}}</h2>
         <p>{{card.description}}</p>
-        <p>{{card.prise}}</p>
-        <button>Купить</button>
+        <p>{{card.prise}} руб.</p>
+        <button @click="shop(item)">Купить</button>
       </div>
   </div>
 </section>
@@ -21,6 +21,11 @@ export default {
         card(){
             return this.$store.getters.getCardById(this.$route.params.id);
         }
+    },
+    methods:{
+         shop(item){
+            this.$store.commit('addToBasket', {product: item});
+        }
     }
 }
 </script>
@@ -31,11 +36,10 @@ export default {
         flex-direction: column;
     }
     .card{
-        height: 400px;
+        
         margin: 1rem;
         background-color: white;
         padding: 1rem;
-        /* flex: 1; */
         display: flex;
         border: 2px solid white;
     }
