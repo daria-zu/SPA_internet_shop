@@ -115,24 +115,6 @@ export default createStore({
     ]
   },
   mutations: {
-    checkUser(state, user){
-      if(state.users.indexOf(user) == -1){
-        document.querySelector('.false').classList.toggle("unshow");
-      } else{
-        document.querySelector('.true').classList.toggle("unshow");
-      }
-
-      // for(let oneUser of state.users){
-      //   if(oneUser == user){
-      //     document.querySelector('.true').classList.toggle("unshow")
-      //   } else{
-      //     document.querySelector('.false').classList.toggle("unshow")
-      //   }
-      // }
-
-      // return state.users.indexOf(user);
-    },
-
     addToBasket(state, {product}){
       if(state.shop.find(item => item.id === product.id)){
         product.quantity ++;
@@ -208,6 +190,9 @@ export default createStore({
     },
     getCardById: state => (id) => {
       return state.products.filter(product => product.id == id)[0];
+    },
+    getUsers(state){
+      return state.users;
     }
   }
 })

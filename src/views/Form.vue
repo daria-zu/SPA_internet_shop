@@ -26,6 +26,7 @@
 <script>
 import {Form, Field, ErrorMessage, configure} from 'vee-validate';
 import * as yup from 'yup';
+import {mapGetters} from 'vuex';
 
 configure({
   validateOnInput: true
@@ -47,12 +48,21 @@ export default {
       })
     }
   },
+  
+   computed:{
+      ...mapGetters(['getUsers'])
+   },
 
    methods: {
-   
       sendData(values){
          console.log(values);
-         this.$store.commit('checkUser', {user: values});
+         for(let user of this.getUsers){
+            if(values.name === user.name || values.password === user.password){
+            document.querySelector('.true').classList.toggle("unshow");
+            } else{
+            document.querySelector('.false').classList.toggle("unshow");
+            }
+         }
       }
    }
 
