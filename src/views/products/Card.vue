@@ -2,7 +2,13 @@
   <section>
   <div class="card">{{$route.params.id}}
       <div class="box_img">
-        <img :src="'./assets/'+card.img">
+
+        <CarouselCard :interval="7000" height="300px" type="card" arrow="always">
+        <CarouselCardItem v-for="img in card.img_slider" :key="img.id">
+            <h1 v-text="img"></h1>
+        </CarouselCardItem>
+        </CarouselCard>
+                
       </div>
       <div class="box_text">
         <h2>{{card.name}}</h2>
@@ -15,8 +21,14 @@
 </template>
 
 <script>
+import {
+  CarouselCard,
+  CarouselCardItem
+} from 'vue-carousel-card';
+import 'vue-carousel-card/styles/index.css';
 export default {
     name: 'Card',
+    components: { CarouselCard, CarouselCardItem },
     computed: {
         card(){
             return this.$store.getters.getCardById(this.$route.params.id);
@@ -71,4 +83,14 @@ export default {
    button:focus{
       border: 2px solid #b30000;
    }
+   h1 {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+    background: linear-gradient(90deg, rgba(88,140,236,1), rgba(106,106,207,1))
+    }
 </style>

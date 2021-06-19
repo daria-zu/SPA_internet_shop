@@ -126,9 +126,6 @@ export default createStore({
       }
       state.count ++;
       state.totalSum = state.totalSum + product.prise;
-      // console.log(state.shop);
-      // console.log(state.totalSum);
-      // console.log(state.count);
     },
 
     getLess(state, {product}){
@@ -143,7 +140,6 @@ export default createStore({
             state.totalSum -= state.shop[index].prise;
             state.count -= 1;
           }
-        
       }
     },
 

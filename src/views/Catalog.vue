@@ -5,9 +5,9 @@
       <router-link class="catalog" v-for="tab in tabs" :key="tab.name" :to="tab.path">{{tab.name}}</router-link>
    </div>
    <div class="products">
-      <transition>
+ 
          <router-view/>
-      </transition>
+
    </div>
 </section> 
 
@@ -64,20 +64,5 @@ export default {
       padding: 2rem;
       flex-grow: 1;
       display: flex;
-   }
-   .v-enter,
-   .v-leave-to {
-   opacity: 0;
-   }
-   
-   .v-enter-to,
-   .v-leave {
-   opacity: 1;
-   }
-   
-   .v-enter-active,
-   .v-leave-active {
-   transition: all 0.2s linear;
-   transform-origin: top center;
    }
 </style>

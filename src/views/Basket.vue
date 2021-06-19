@@ -30,17 +30,13 @@
       </div>
    </section>
 
-   <!-- <router-view>
-    </router-view> -->
 </template>
 
 <script>
-// import {mapMutations} from 'vuex';
+
 export default {
    name: 'Basket',
-   // computed: {
-   //      ...mapMutations(['getTotalSum'])
-   //  },
+
    methods:{
          less(item){
             this.$store.commit('getLess', {product: item});

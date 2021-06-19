@@ -15,10 +15,7 @@
   </div>
 </section>
 
-<transition>
     <router-view/>
-</transition>
-
 </template>
 
 <script>
@@ -87,20 +84,5 @@ export default {
    .link{
        text-decoration: none;
        color: #151719;
-   }
-     .v-enter,
-   .v-leave-to {
-   opacity: 0;
-   }
-   
-   .v-enter-to,
-   .v-leave {
-   opacity: 1;
-   }
-   
-   .v-enter-active,
-   .v-leave-active {
-   transition: all 0.2s linear;
-   transform-origin: top center;
    }
 </style>
