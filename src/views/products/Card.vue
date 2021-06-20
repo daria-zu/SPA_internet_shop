@@ -1,65 +1,52 @@
 <template>
   <section>
-  <div class="card">{{$route.params.id}}
-      <div class="box_img">
-
-        <CarouselCard :interval="7000" height="300px" type="card" arrow="always">
-        <CarouselCardItem v-for="img in card.img_slider" :key="img.id">
-            <h1 v-text="img"></h1>
-        </CarouselCardItem>
-        </CarouselCard>
-                
+  <div class="card">
+      <div class="slider">
+          <slider :slider_data="card.img_slider"></slider>                
       </div>
       <div class="box_text">
         <h2>{{card.name}}</h2>
         <p>{{card.description}}</p>
         <p>{{card.prise}} руб.</p>
-        <button @click="shop(item)">Купить</button>
+        <button @click="shop(card)">Купить</button>
       </div>
   </div>
 </section>
 </template>
 
 <script>
-import {
-  CarouselCard,
-  CarouselCardItem
-} from 'vue-carousel-card';
-import 'vue-carousel-card/styles/index.css';
+import Slider from '../../components/Slider.vue';
 export default {
     name: 'Card',
-    components: { CarouselCard, CarouselCardItem },
+    components: {Slider},
     computed: {
         card(){
             return this.$store.getters.getCardById(this.$route.params.id);
         }
     },
     methods:{
-         shop(item){
-            this.$store.commit('addToBasket', {product: item});
+         shop(card){
+            this.$store.commit('addToBasket', {product: card});
         }
-    }
+    },
 }
 </script>
 
 <style scoped>
     section{
         display: flex;
-        flex-direction: column;
     }
     .card{
-        
         margin: 1rem;
         background-color: white;
         padding: 1rem;
         display: flex;
         border: 2px solid white;
+    
     }
-    .box_img{
+    .slider{
         width: 30%;
-        border: 1px solid transparent
-    }
-    img{
+        border: 1px solid transparent;
         overflow: hidden;
     }
     .box_text{

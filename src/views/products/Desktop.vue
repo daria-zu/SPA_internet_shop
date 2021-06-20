@@ -1,24 +1,20 @@
 <template>
 <section>
-   
-        <div class="card" v-for="item in getComputers" :key="item.id">
-            <div class="box_img">
-                <img :src="require('@/assets/' + item.img)">
-            </div>
-            <div class="box_text">
-                <h2>{{item.name}}</h2>
-                <p>{{item.prise}} руб.</p>   
-                <button @click="shop(item)">Купить</button>
-            </div>
-            <div class="box_link">
-                <router-link class="link" :to="{name:'Card', params: {id: item.id}}">Подробнее -></router-link>
-            </div>
+    <div class="card" v-for="item in getComputers" :key="item.id">
+        <div class="box_img">
+            <img :src="require('@/assets/' + item.img)">
         </div>
-   
+        <div class="box_text">
+            <h2>{{item.name}}</h2>
+            <p>{{item.prise}} руб.</p>   
+            <button @click="shop(item)">Купить</button>
+        </div>
+        <div class="box_link">
+            <router-link class="link" :to="{name:'Card', params: {id: item.id}}">Подробнее -></router-link>
+        </div>
+    </div>
 </section>
-
     <router-view/>
-
 </template>
 
 <script>

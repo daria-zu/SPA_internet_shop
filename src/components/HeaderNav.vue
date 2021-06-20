@@ -4,7 +4,8 @@
           <router-link to="/" class="name">HOME</router-link>
       </div>
       <nav>
-           <router-link class="nav_item" v-for="tab in tabs" :key="tab.path" :to="tab.path">{{tab.name}}</router-link>
+           <router-link :class="tab.class" class="nav_item" v-for="tab in tabs" :key="tab.path" :to="tab.path">{{tab.name}}</router-link>
+           <span v-if="$store.state.count>0">{{$store.state.count}}</span>
       </nav>
   </div>
 </template>
@@ -55,5 +56,22 @@ export default {
         color: #f5f5f5;
         font-size: 2rem;
         text-decoration: none;
+    }
+    span{
+        color: #f5f5f5;
+        font-size: .8rem;
+        background-color: #b30000;
+        border-radius: 50%;
+        text-align: center;
+        display: block;
+        height: 18px;
+        width: 18px;
+        line-height: 18px;
+        position: absolute;
+        left: 92%;
+        bottom: 10px;
+    }
+    nav{
+        position: relative;
     }
 </style>
